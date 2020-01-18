@@ -14,7 +14,7 @@ class _AddDataState extends State<AddData> {
   TextEditingController gajiController = new TextEditingController();
 
   void addData() {
-    var url = "http://192.168.42.130/pegawai/tambahPegawai.php";
+    var url = "http://hdr3105.000webhostapp.com/tambahPegawai.php";
     http.post(url, body: {
       "namaPegawai": namaController.text,
       "posisiPegawai": posisiController.text,

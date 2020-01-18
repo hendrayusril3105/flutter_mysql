@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_mysql/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'Detail.dart';
@@ -7,7 +8,7 @@ import 'AddData.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: MyApp(),
+    home: Login(),
     debugShowCheckedModeBanner: false,
   ));
 }
@@ -19,7 +20,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // ini method yang kita gunakan untuk mengambil data dari server
    Future<List> getData() async {
-    final response = await http.get("http://192.168.42.130/pegawai/getPegawai.php");
+    final response = await http.get("http://hdr3105.000webhostapp.com/getPegawai.php");
     return json.decode(response.body);
    }
 

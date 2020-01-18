@@ -17,8 +17,9 @@ class _EditDataState extends State<EditData> {
   TextEditingController gajiController = new TextEditingController();
 
   void editData() {
-    var url = "http://192.168.42.130/pegawai/tambahPegawai.php";
+    var url = "http://hdr3105.000webhostapp.com/cobaEdit.php";
     http.post(url, body: {
+      "id": widget.list[widget.index]['id'],
       "namaPegawai": namaController.text,
       "posisiPegawai": posisiController.text,
       "gajiPegawai": gajiController.text
@@ -26,10 +27,22 @@ class _EditDataState extends State<EditData> {
   }
 
   @override
+  void initState() {
+    namaController =
+        new TextEditingController(text: widget.list[widget.index]['nama']);
+    posisiController =
+        new TextEditingController(text: widget.list[widget.index]['posisi']);
+    gajiController =
+        new TextEditingController(text: widget.list[widget.index]['gaji']);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(
-        title: Text("Tambah Data Pegawai"),
+        title: Text('Edit Data Pegawai'),
         backgroundColor: Colors.green,
       ),
       body: Padding(
@@ -59,16 +72,14 @@ class _EditDataState extends State<EditData> {
                     controller: gajiController,
                     decoration: new InputDecoration(
                         hintText: "Input Gaji Pegawai",
-                        labelText: "Gaji Pegawai",
+                        labelText: "Input Gaji",
                         border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(20.0)))),
-                new Padding(padding: new EdgeInsets.all(5.0)),
+                new Padding(padding: const EdgeInsets.all(5.0)),
                 new RaisedButton(
-                  child: new Text("Tambah Data"),
-                  color: Colors.green,
+                  child: new Text("Edit Data"),
+                  color: Colors.blueAccent,
                   onPressed: () {
-                    //addData();
-                    //untuk upload image
                     editData();
                     Navigator.of(context).push(new MaterialPageRoute(
                         builder: (BuildContext context) => new MyApp()));
